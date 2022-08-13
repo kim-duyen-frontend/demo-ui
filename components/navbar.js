@@ -57,7 +57,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                             <div className={styles.btns}>
-                                <button className={styles.btn}>Get Started</button>
+                                <button className={styles.btn} onClick={() => router.push("/courses")}>Get Courses</button>
                                 <div className={styles.btnLogin} onClick={() => router.push("/auth/login")}>Login</div>
                             </div>
                         </div>
