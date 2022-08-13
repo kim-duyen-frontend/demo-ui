@@ -34,7 +34,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className={styles.right}>
-                        <button className={styles.btn} onClick={() => router.push("/courses")}>Get Courses</button>
+                        <button className={styles.btn} onClick={() => router.push("/mentors")}>Get Started</button>
                         <div className={styles.btnLogin} onClick={() => router.push("/auth/login")}>Login</div>
                     </div>
                     {show ? (
@@ -57,7 +57,7 @@ const Navbar = () => {
                                 </li>
                             </ul>
                             <div className={styles.btns}>
-                                <button className={styles.btn} onClick={() => router.push("/courses")}>Get Courses</button>
+                                <button className={styles.btn} onClick={() => router.push("/mentors")}>Get Started</button>
                                 <div className={styles.btnLogin} onClick={() => router.push("/auth/login")}>Login</div>
                             </div>
                         </div>
