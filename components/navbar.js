@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router'
-import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import styles from "../styles/navbar.module.scss";
 
 const Navbar = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className={styles.right}>
-                        <button className={styles.btn}>Get Started</button>
+                        <button className={styles.btn} onClick={() => router.push("/courses")}>Get Courses</button>
                         <div className={styles.btnLogin} onClick={() => router.push("/auth/login")}>Login</div>
                     </div>
                     {show ? (
