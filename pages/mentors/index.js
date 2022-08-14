@@ -1,11 +1,12 @@
 import React from 'react';
 import LayoutMentors from '../../components/layout-mentors';
+import ListMentor from '../../features/list-mentor';
 
 const Mentors = () => {
     return (
-        <div>
-            <h1>Mentors</h1>
-        </div>
+        <>
+            <ListMentor />
+        </>
     );
 };
 Mentors.getLayout = function getLayout(page) {

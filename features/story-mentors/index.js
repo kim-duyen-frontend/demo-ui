@@ -54,7 +54,7 @@ const StoryMentor = () => {
                     {dataCandidate.map((item, index) => (
                         <div className={styles.column} key={index}>
                             <div className={styles.header}>
-                                <Image src={item.thumbnail} width={35} height={32} objectFit alt={item.name} />
+                                <Image src={item.thumbnail} width={35} height={32} alt={item.name} />
                             </div>
                             <div className={styles.body}>
                                 <p>
