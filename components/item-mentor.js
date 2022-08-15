@@ -56,7 +56,7 @@ const ItemMentor = ({ user }) => {
                         </div>
                         <div className={styles.viewProfile}>
                             <div className={styles.btn}>
-                                <Link href="/mentors/[id]" as={`/mentors/${user.id}`}>
+                                <Link href="/mentors/[name]" as={`/mentors/${user.slug}`}>
                                     <a>View Profile</a>
                                 </Link>
 
