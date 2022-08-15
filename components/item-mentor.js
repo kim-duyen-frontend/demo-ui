@@ -75,7 +75,7 @@ const ItemMentor = ({ user }) => {
                             </Link>
                         </div>
                         <div className={styles.content}>
-                            <p>
+                            <p className={styles.question}>
                                 What can I expect from this mentor?
                             </p>
                             <div className={styles.line} />

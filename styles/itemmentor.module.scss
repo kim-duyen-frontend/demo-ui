@@ -3,6 +3,7 @@
     padding: 0.75rem;
     border-radius: 0.5rem;
     border: 1px solid #9CA3AF;
+    background-color: #fff;
 
     .container {
         display: grid;
@@ -11,6 +12,7 @@
 
         .columnLeft {
             grid-column: span 2 / span 2;
+            // background-color: #fff;
 
             .subColumnLeft {
                 display: flex;
@@ -61,7 +63,10 @@
 
                 .star {
                     background-color: #08C3A8;
-                    padding: 0.5rem 1rem;
+                    text-align: center;
+                    width: 8rem;
+                    height: 2rem;
+                    line-height: 2rem;
                     font-weight: 700;
                     color: #fff;
                     font-size: 0.875rem;
@@ -94,6 +99,7 @@
             .description {
                 font-size: 0.875rem;
                 margin: 0.5rem 0;
+                color: #4a4a4a;
             }
 
             .tags {
@@ -138,11 +144,13 @@
             border-left: 2px solid #9CA3AF;
             padding: 0 1rem;
             min-height: 100%;
+            // background-color: #fff;
 
             .useTrial {
                 display: flex;
                 justify-content: flex-end;
                 height: 10%;
+
                 .text {
                     background-color: #E5E7EB;
                     width: 150px;
@@ -163,6 +171,12 @@
 
             .content {
                 height: 90%;
+                color: #172E59;
+
+                >.question {
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                }
             }
 
             .line {
@@ -177,6 +191,10 @@
     .itemmentor {
         .container {
             grid-template-columns: repeat(1, minmax(0, 1fr));
+
+            .columnRight {
+                display: none;
+            }
         }
     }
 }
