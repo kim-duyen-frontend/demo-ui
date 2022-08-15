@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useQuery } from "react-query";
+import React, { useState, useEffect } from 'react';
 import { getMentorsPage } from "../../utils/api/callAPI";
 import styles from "../../styles/listmentor.module.scss";
 import ItemMentor from "../../components/item-mentor";
@@ -8,40 +7,32 @@ import Categories from '../categories';
 
 const ListMentor = () => {
     const [page, setPage] = useState(1);
-    
-    const {
-        isLoading,
-        isError,
-        error,
-        data: mentors,
-        isFetching,
-        isPreviousData
-    } = useQuery(["/mentors", page], () => getMentorsPage(page), {
-        keepPreviousData: true
-    })
-    if (isLoading) return <p>Loading Users Mentor...</p>
-
-    if (isError) return <p>Error: {error.message}</p>
-    const [list, setList] = useState(mentors.data);
-    const content = list.map(user => <ItemMentor key={user.id} user={user} />)
-
+    const [mentors, setMentors] = useState([]);
+    const [list, setList] = useState([]);
+    useEffect(() => {
+        getMentorsPage(page).then((json) => {
+            setMentors(json);
+            setList(json.data);
+        });
+    }, [page]);
 
     const lastPage = () => setPage(mentors.total_page)
 
     const firstPage = () => setPage(1)
-    
+
     const pagesArray = Array(mentors.total_page).fill().map((_, index) => index + 1)
     const paginationNumber = (
         <div className={styles.pagination}>
-            <div className={styles.btnPrev} onClick={firstPage} disabled={isPreviousData || page === 1}>&lt;&lt;</div>
+            <div className={styles.btnPrev} onClick={firstPage} disabled={page === 1}>&lt;&lt;</div>
             {pagesArray.map(pg => <Pagination key={pg} pg={pg} setPage={setPage} />)}
-            <div className={styles.btnNext} onClick={lastPage} disabled={isPreviousData || page === mentors.total_page}>&gt;&gt;</div>
+            <div className={styles.btnNext} onClick={lastPage} disabled={page === mentors.total_page}>&gt;&gt;</div>
         </div>
     )
+    const content = list && list.length > 0 && list.map(user => <ItemMentor key={user.id} user={user} />)
     const filterCategoryMentor = (keyCategory) => {
         const newArr = [];
         if (keyCategory === "All Category") {
-            setList(mentors.data)
+            setList(mentors.data);
         } else {
             mentors.data.map((item) => item.tags.map((tag) => {
                 if (tag === keyCategory) {
@@ -56,7 +47,6 @@ const ListMentor = () => {
             <div className="container">
                 <div className={styles.container}>
                     <Categories filterCategoryMentor={filterCategoryMentor} />
-                    {isFetching && <span>Loading...</span>}
                     {content}
                     {paginationNumber}
                 </div>
