@@ -3,12 +3,15 @@ import { getMentorsPage } from "../../utils/api/callAPI";
 import styles from "../../styles/listmentor.module.scss";
 import ItemMentor from "../../components/item-mentor";
 import Pagination from '../../components/pagination';
+import Search from '../search';
 import Categories from '../categories';
 
 const ListMentor = () => {
     const [page, setPage] = useState(1);
     const [mentors, setMentors] = useState([]);
     const [list, setList] = useState([]);
+    const [textSearch, setTextSearch] = useState("");
+
     useEffect(() => {
         getMentorsPage(page).then((json) => {
             setMentors(json);
@@ -42,10 +45,31 @@ const ListMentor = () => {
             setList(newArr);
         }
     }
+
+    const searchDataMentor = (event) => {
+        event.preventDefault();
+        setTextSearch(event.target.value);
+        let text = event.target.value;
+        let tempArr = mentors.data;
+        tempArr = tempArr.filter((item) => {
+            if (text === "") {
+                return item;
+            } else {
+                if ((item.name || "").toLowerCase().includes(text.toLowerCase())) {
+                    return item;
+                }
+                if ((item.workplace || "").toLowerCase() !== "" && (item.workplace || item.workplace !== "").toLowerCase().includes(text.toLowerCase())) {
+                    return item;
+                }
+            }
+        })
+        setList(tempArr);
+    }
     return (
         <div className={styles.listmentor}>
             <div className="container">
                 <div className={styles.container}>
+                    <Search textSearch={textSearch} searchDataMentor={searchDataMentor} />
                     <Categories filterCategoryMentor={filterCategoryMentor} />
                     {content}
                     {paginationNumber}
