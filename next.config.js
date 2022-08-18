@@ -4,7 +4,6 @@ const nextConfig = {
   swcMinify: true,
 }
 
-// module.exports = nextConfig
 module.exports = {
   experimental: {
     images: {
@@ -12,3 +11,4 @@ module.exports = {
     }
   }
 }
+module.exports = nextConfig

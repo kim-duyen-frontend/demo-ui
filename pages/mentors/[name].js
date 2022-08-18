@@ -14,6 +14,7 @@ const DetailMentor = ({ name }) => {
         getMentorDetail(name).then((json) => {
             setMentorDetail(json.data)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
@@ -74,11 +75,7 @@ const DetailMentor = ({ name }) => {
                                     <div className={styles.description}>
                                         <h3>About</h3>
                                         <p>
-                                            👋 Hi!!! I run the UX teams for Gmail @ Google, based out of San Francisco.
-                                            I also teach at UC Berkeley.
-                                            I have a strong track record of helping mentees land UX jobs, mostly in big tech.
-
-                                            As a mentee, you’ll have hands on support from me. Our first call entails going through a career worksheet. From there, I'll dive in with written notes and a structured plan. When you leave sessions, you'll know exactly what to do next and why.
+                                            {item.description}
                                         </p>
                                     </div>
                                 </div>
@@ -105,10 +102,6 @@ const DetailMentor = ({ name }) => {
                                             </Link>
                                         ))}
                                     </div>
-                                </div>
-                                <div className={styles.line}></div>
-                                <div className={styles.similar}>
-                                    <h3>Similar mentors</h3>
                                 </div>
                             </div>
                         ))}
